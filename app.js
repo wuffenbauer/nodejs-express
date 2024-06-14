@@ -13,6 +13,22 @@ app.get('/profil', (req, res) => {
     res.render('profil')
 })
 
+app.get('/pengalaman', (req, res) => {
+    // let data_kandidat = {
+    //     nama: 'Ami',
+    //     posisi: 'Mahasiswa',
+    //     perusahaan: 'Universitas Terbuka',
+    // }
+    res.render('daftar-pengalaman', {
+        nama: 'Amirah Puspadewi',
+        jenis_kelamin: 'P',
+        profesi: 'Mahasiswa',
+        institusi: 'Universitas Terbuka',
+        gaji: 1000000,
+        pajak: (this.gaji > 10000000) ? 'Gaji Anda kena pajak.' : 'Aman, tidak perlu bayar pajak.',
+    })
+})
+
 app.listen(port, () => {
     console.log(`App sudah siap, buka http://localhost:${port}`)
 })
