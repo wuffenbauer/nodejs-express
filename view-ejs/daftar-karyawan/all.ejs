@@ -7,6 +7,7 @@
             <th>Jenis Kelamin</th>
             <th>Departemen</th>
             <th>Jabatan</th>
+            <th>Opsi</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +17,11 @@
                 <td><%= semua_karyawan[i].jenis_kelamin %></td>
                 <td><%= semua_karyawan[i].departemen_kode %></td>
                 <td><%= semua_karyawan[i].jabatan_nama %></td>
+                <td>
+                    <a href="/daftar-karyawan/detail">
+                        <button>detail</button>
+                    </a>
+                </td>
             </tr>
         <% } %>
 

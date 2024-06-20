@@ -1,0 +1,16 @@
+<h1>Detail Data Karyawan</h1>
+<hr><hr>
+<ul>
+    <li>Nama: <%= detail_karyawan[0].nama %></li>
+    <li>Alamat: <%= detail_karyawan[0].alamat %></li>
+    <li>Nomor Telp.: <%= detail_karyawan[0].no_telepon %></li>
+    <li>Golongan Darah: <%= detail_karyawan[0].gol_darah %></li>
+    <li>Jenis Kelamin: <%= detail_karyawan[0].jenis_kelamin %></li>
+    <li>Departemen: <%= detail_karyawan[0].departemen_kode %> (<%= detail_karyawan[0].departemen_nama %>)</li>
+    <li>Jabatan: <%= detail_karyawan[0].jabatan_nama %></li>
+    <li>Role: <%= detail_karyawan[0].jabatan_role %></li>
+    <li>Jobdesc: <%= detail_karyawan[0].jabatan_deskripsi %></li>
+</ul>
+<pre>
+    <% JSON.stringify(detail_karyawan, null, 4) %>
+</pre>

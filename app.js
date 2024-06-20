@@ -37,6 +37,14 @@ app.get('/daftar-karyawan', async(req, res) => {
     res.render('daftar-karyawan/all', dataview)
 })
 
+app.get('/daftar-karyawan/detail', async(req, res) => {
+    const m_daftar_karyawan = require('./model/m_daftar_karyawan')
+    let dataview = {
+        detail_karyawan: await m_daftar_karyawan.get_satu_karyawan(),
+    }
+    res.render('daftar-karyawan/detail', dataview)
+})
+
 app.listen(port, () => {
     console.log(`App sudah siap, buka http://localhost:${port}`)
 })
