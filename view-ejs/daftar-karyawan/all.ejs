@@ -1,0 +1,38 @@
+<h1>Data Seluruh Karyawan PT Indo Teknik</h1>
+<hr><hr><br>
+<table border = '1'>
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Jenis Kelamin</th>
+            <th>Departemen</th>
+            <th>Jabatan</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (const i in semua_karyawan) { %>
+            <tr>
+                <td><%= semua_karyawan[i].nama %></td>
+                <td><%= semua_karyawan[i].jenis_kelamin %></td>
+                <td><%= semua_karyawan[i].departemen_kode %></td>
+                <td><%= semua_karyawan[i].jabatan_nama %></td>
+            </tr>
+        <% } %>
+
+        <!-- cara penulisan lain, hanya pakai ejs satu kali -->
+        <%# 
+            for (const i in semua_karyawan) {
+                __append('<tr>')
+                __append(`<td>${semua_karyawan[i].nama}</td>`)
+                __append(`<td>${semua_karyawan[i].jenis_kelamin}</td>`)
+                __append(`<td>${semua_karyawan[i].departemen_kdoe}</td>`)
+                __append(`<td>${semua_karyawan[i].jabatan_nama}</td>`)
+                __append('</tr>')
+            }
+        %>
+       
+    </tbody>
+</table>
+<pre>
+    <%= JSON.stringify(semua_karyawan, null, 4) %>
+</pre>
