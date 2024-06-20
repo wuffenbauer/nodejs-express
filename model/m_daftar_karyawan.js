@@ -31,7 +31,7 @@ module.exports = {
         })
     },
 
-    get_satu_karyawan: function() {
+    get_satu_karyawan: function(id) {
         let sql = mysql.format(
             `SELECT 
                 k.*, 
@@ -40,9 +40,10 @@ module.exports = {
             FROM daftar_karyawan AS k
             LEFT JOIN master_departemen AS d ON d.id = k.departemen_id
             LEFT JOIN master_jabatan AS j ON j.id = k.jabatan_id
-            WHERE k.id = 1;`
+            WHERE k.id = ?;`,
+            [id]            
         )
-        
+
         return new Promise((resolve, reject) => {
             db.query(sql, function(errorSql, hasil) {
                 if (errorSql) {

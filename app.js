@@ -37,10 +37,11 @@ app.get('/daftar-karyawan', async(req, res) => {
     res.render('daftar-karyawan/all', dataview)
 })
 
-app.get('/daftar-karyawan/detail', async(req, res) => {
+app.get('/daftar-karyawan/detail/:id_karyawan', async(req, res) => {    
     const m_daftar_karyawan = require('./model/m_daftar_karyawan')
+    const id = req.params.id_karyawan
     let dataview = {
-        detail_karyawan: await m_daftar_karyawan.get_satu_karyawan(),
+        detail_karyawan: await m_daftar_karyawan.get_satu_karyawan(id),
     }
     res.render('daftar-karyawan/detail', dataview)
 })
