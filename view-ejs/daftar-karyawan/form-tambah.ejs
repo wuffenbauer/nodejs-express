@@ -1,0 +1,37 @@
+<h1>Form Input Karyawan Baru</h1>
+<hr><hr>
+
+<form action="/daftar-karyawan/proses-simpan" method="post">
+    <label>Nama Lengkap: </label>
+    <input type="text" name="nama_lengkap" id="namakaryawan">
+    <br><br>
+
+    <label>Alamat: </label>
+    <textarea name="alamat" id="alamatkaryawan"></textarea>
+    <br><br>
+
+    <label>No. Telepon: </label>
+    <input type="text" name="no_telp" id="notelpkaryawan">
+    <br><br>
+
+    <label>Golongan Darah: </label>
+    <select name="gol_darah" id="goldarkaryawan">
+        <option>--pilih--</option>
+        <option>A</option>
+        <option>B</option>
+        <option>O</option>
+        <option>AB</option>
+    </select>
+    <br><br>
+
+    <label>Jenis Kelamin: </label>
+    <select name="jenis_kelamin" id="jeniskelaminkaryawan">
+        <option>--pilih--</option>
+        <option value="L">Laki-laki</option>
+        <option value="P">Perempuan</option>
+        <option value="-">Tidak disebutkan</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Simpan</button>
+</form>
