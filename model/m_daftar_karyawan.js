@@ -8,6 +8,7 @@ const db      = mysql.createConnection ({
 db.connect()
 
 module.exports = {
+    
     get_semua_karyawan: function() {
         let sql = mysql.format(
             `SELECT 
@@ -73,6 +74,7 @@ module.exports = {
             gol_darah       : req.body.gol_darah,
             jenis_kelamin   : req.body.jenis_kelamin,
         }
+
         let sql = mysql.format(
             `INSERT INTO daftar_karyawan SET ?`,
             [data]            
@@ -89,4 +91,31 @@ module.exports = {
             })
         })
     },    
+
+    edit_karyawan: function(req) {
+        let data = {
+            nama            : req.body.nama_lengkap,
+            alamat          : req.body.alamat,
+            no_telepon      : req.body.no_telp,
+            gol_darah       : req.body.gol_darah,
+            jenis_kelamin   : req.body.jenis_kelamin,
+        }
+
+        let sql = mysql.format(
+            `UPDATE daftar_karyawan SET ? WHERE id = ?`,
+            [data, req.params.id_karyawan]            
+        )
+
+        return new Promise((resolve, reject) => {
+            db.query(sql, function(errorSql, hasil) {
+                if (errorSql) {
+                    reject(errorSql)
+                }
+                else {
+                    resolve(hasil)
+                }
+            })
+        })
+    },
+        
 }

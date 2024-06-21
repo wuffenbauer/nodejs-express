@@ -36,6 +36,8 @@ app.get('/daftar-karyawan', c_daftar_karyawan.index)
 app.get('/daftar-karyawan/detail/:id_karyawan', c_daftar_karyawan.detail)
 app.get('/daftar-karyawan/tambah', c_daftar_karyawan.tambah)
 app.post('/daftar-karyawan/proses-simpan', c_daftar_karyawan.proses_simpan)
+app.get('/daftar-karyawan/edit/:id_karyawan', c_daftar_karyawan.edit)
+app.post('/daftar-karyawan/proses-update/:id_karyawan', c_daftar_karyawan.proses_update)
 
 app.listen(port, () => {
     console.log(`App sudah siap, buka http://localhost:${port}`)

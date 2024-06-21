@@ -1,0 +1,45 @@
+<h1>Form Input Karyawan Baru</h1>
+<hr><hr>
+
+<% if (info_error) { %>
+    <strong style="color: red;">
+        <% info_error.errno %> - <% info_error.code %> <br>
+        <% info_error.sqlMessage %> <br>
+    </strong>
+    <br>
+<% } %>
+
+<form action="/daftar-karyawan/proses-update/<%= detail_karyawan[0].id %>" method="post">
+    <label>Nama Lengkap: </label>
+    <input type="text" name="nama_lengkap" id="namakaryawan" value="<%= detail_karyawan[0].nama %>">
+    <br><br>
+
+    <label>Alamat: </label>
+    <textarea name="alamat" id="alamatkaryawan"><%= detail_karyawan[0].alamat %></textarea>
+    <br><br>
+
+    <label>No. Telepon: </label>
+    <input type="text" name="no_telp" id="notelpkaryawan" value="<%= detail_karyawan[0].no_telp %>">
+    <br><br>
+
+    <label>Golongan Darah: </label>
+    <select name="gol_darah" id="goldarkaryawan">
+        <option>--pilih--</option>
+        <option <%= (detail_karyawan[0].gol_darah == 'A')  ? 'selected' : '' %>>A</option>
+        <option <%= (detail_karyawan[0].gol_darah == 'B')  ? 'selected' : '' %>>B</option>
+        <option <%= (detail_karyawan[0].gol_darah == 'O')  ? 'selected' : '' %>>O</option>
+        <option <%= (detail_karyawan[0].gol_darah == 'AB') ? 'selected' : '' %>>AB</option>
+    </select>
+    <br><br>
+
+    <label>Jenis Kelamin: </label>
+    <select name="jenis_kelamin" id="jeniskelaminkaryawan">
+        <option>--pilih--</option>
+        <option <%= (detail_karyawan[0].jenis_kelamin == 'L' ? 'selected') %> value="L">Laki-laki</option>
+        <option <%= (detail_karyawan[0].jenis_kelamin == 'P' ? 'selected') %> value="P">Perempuan</option>
+        <option <%= (detail_karyawan[0].jenis_kelamin == '-' ? 'selected') %> value="-">Tidak disebutkan</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Perbarui</button>
+</form>

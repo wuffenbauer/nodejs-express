@@ -4,6 +4,12 @@
 <% if (req.query.status == 'insert-success') { %>
     <strong style="color: green;">Data berhasil tersimpan ke database!</strong><br><br>
 <% } %>
+<% if (req.query.status == 'update-success') { %>
+    <strong style="color: green;">Data karyawan berhasil diperbarui!</strong><br><br>
+<% } %>
+<% if (req.query.status == 'update-failed') { %>
+    <strong style="color: green;">Data gagal diperbarui, cek terminal!</strong><br><br>
+<% } %>
 
 <a href="/daftar-karyawan/tambah">
     <button>Input Karyawan Baru</button>
@@ -30,6 +36,9 @@
                 <td>
                     <a href="/daftar-karyawan/detail/<%= semua_karyawan[i].id %>">
                         <button>detail</button>
+                    </a>
+                    <a href="/daftar-karyawan/edit/<%= semua_karyawan[i].id %>">
+                        <button>edit</button>
                     </a>
                 </td>
             </tr>
