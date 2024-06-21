@@ -33,6 +33,7 @@ app.get('/pengalaman', (req, res) => {
 app.get('/daftar-karyawan', async(req, res) => {      
     const m_daftar_karyawan = require('./model/m_daftar_karyawan')      
     let dataview = {
+        req: req,
         semua_karyawan: await m_daftar_karyawan.get_semua_karyawan(),
     }
     res.render('daftar-karyawan/all', dataview)
@@ -48,15 +49,26 @@ app.get('/daftar-karyawan/detail/:id_karyawan', async(req, res) => {
 })
 
 app.get('/daftar-karyawan/tambah', async(req, res) => {
-    res.render('daftar-karyawan/form-tambah')
+    res.render('daftar-karyawan/form-tambah', {info_error: null})
 })
 
 app.post('/daftar-karyawan/proses-simpan', async(req, res) => {
-    // ambil kiriman dari form html satu-satu
-    let nama_lengkap = req.body.nama_lengkap
-    let alamat = req.body.alamat
-    // ambil semuanya
-    res.send(req.body)
+    // ambil kiriman dari form html satu-satu:
+    // let nama_lengkap = req.body.nama_lengkap
+    // let alamat = req.body.alamat
+    // ambil semuanya:
+    // res.send(req.body)
+    
+    const m_daftar_karyawan = require('./model/m_daftar_karyawan')
+    try {      
+        let insert = await m_daftar_karyawan.tambah_karyawan(req)  
+        if (insert.affectedRows > 0) {
+            res.redirect('/daftar-karyawan?status=insert-success')
+        }        
+    } 
+    catch (error) {        
+        res.render('/daftar-karyawan/form-tambah', {info_error: error})
+    }
 })
 
 app.listen(port, () => {

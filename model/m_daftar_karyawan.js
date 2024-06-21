@@ -54,5 +54,39 @@ module.exports = {
                 }
             })
         })
-    }
+    },
+
+    tambah_karyawan: function(req) {
+        // cara tradisional:
+        // let sql = mysql.format(
+            // `INSERT INTO daftar_karyawan 
+            // (nama, alamat, no_telepon, gol_darah, jenis_kelamin, departemen_id, jabatan_id)
+            // VALUES 
+            // ('Chester Bennington', 'Amerika', null, 'O', 'L', 3, 3)`
+        // )
+        
+        let data = {
+            // nama kolom di sql: req.body.name
+            nama            : req.body.nama_lengkap,
+            alamat          : req.body.alamat,
+            no_telepon      : req.body.no_telp,
+            gol_darah       : req.body.gol_darah,
+            jenis_kelamin   : req.body.jenis_kelamin,
+        }
+        let sql = mysql.format(
+            `INSERT INTO daftar_karyawan SET ?`,
+            [data]            
+        )
+
+        return new Promise((resolve, reject) => {
+            db.query(sql, function(errorSql, hasil) {
+                if (errorSql) {
+                    reject(errorSql)
+                }
+                else {
+                    resolve(hasil)
+                }
+            })
+        })
+    },    
 }
