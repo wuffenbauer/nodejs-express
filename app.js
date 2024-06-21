@@ -30,46 +30,12 @@ app.get('/pengalaman', (req, res) => {
     })
 })
 
-app.get('/daftar-karyawan', async(req, res) => {      
-    const m_daftar_karyawan = require('./model/m_daftar_karyawan')      
-    let dataview = {
-        req: req,
-        semua_karyawan: await m_daftar_karyawan.get_semua_karyawan(),
-    }
-    res.render('daftar-karyawan/all', dataview)
-})
+const c_daftar_karyawan = require('./controller/c_daftar_karyawan')
 
-app.get('/daftar-karyawan/detail/:id_karyawan', async(req, res) => {    
-    const m_daftar_karyawan = require('./model/m_daftar_karyawan')
-    const id = req.params.id_karyawan
-    let dataview = {
-        detail_karyawan: await m_daftar_karyawan.get_satu_karyawan(id),
-    }
-    res.render('daftar-karyawan/detail', dataview)
-})
-
-app.get('/daftar-karyawan/tambah', async(req, res) => {
-    res.render('daftar-karyawan/form-tambah', {info_error: null})
-})
-
-app.post('/daftar-karyawan/proses-simpan', async(req, res) => {
-    // ambil kiriman dari form html satu-satu:
-    // let nama_lengkap = req.body.nama_lengkap
-    // let alamat = req.body.alamat
-    // ambil semuanya:
-    // res.send(req.body)
-    
-    const m_daftar_karyawan = require('./model/m_daftar_karyawan')
-    try {      
-        let insert = await m_daftar_karyawan.tambah_karyawan(req)  
-        if (insert.affectedRows > 0) {
-            res.redirect('/daftar-karyawan?status=insert-success')
-        }        
-    } 
-    catch (error) {        
-        res.render('/daftar-karyawan/form-tambah', {info_error: error})
-    }
-})
+app.get('/daftar-karyawan', c_daftar_karyawan.index)
+app.get('/daftar-karyawan/detail/:id_karyawan', c_daftar_karyawan.detail)
+app.get('/daftar-karyawan/tambah', c_daftar_karyawan.tambah)
+app.post('/daftar-karyawan/proses-simpan', c_daftar_karyawan.proses_simpan)
 
 app.listen(port, () => {
     console.log(`App sudah siap, buka http://localhost:${port}`)
