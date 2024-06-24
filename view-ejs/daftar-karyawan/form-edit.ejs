@@ -3,8 +3,8 @@
 
 <% if (info_error) { %>
     <strong style="color: red;">
-        <% info_error.errno %> - <% info_error.code %> <br>
-        <% info_error.sqlMessage %> <br>
+        <%= info_error.errno %> - <%= info_error.code %> <br>
+        <%= info_error.sqlMessage %> <br>
     </strong>
     <br>
 <% } %>
@@ -35,9 +35,9 @@
     <label>Jenis Kelamin: </label>
     <select name="jenis_kelamin" id="jeniskelaminkaryawan">
         <option>--pilih--</option>
-        <option <%= (detail_karyawan[0].jenis_kelamin == 'L' ? 'selected') %> value="L">Laki-laki</option>
-        <option <%= (detail_karyawan[0].jenis_kelamin == 'P' ? 'selected') %> value="P">Perempuan</option>
-        <option <%= (detail_karyawan[0].jenis_kelamin == '-' ? 'selected') %> value="-">Tidak disebutkan</option>
+        <option <%= (detail_karyawan[0].jenis_kelamin == 'L') ? 'selected' : '' %> value="L">Laki-laki</option>
+        <option <%= (detail_karyawan[0].jenis_kelamin == 'P') ? 'selected' : '' %> value="P">Perempuan</option>
+        <option <%= (detail_karyawan[0].jenis_kelamin == '-') ? 'selected' : '' %> value="-">Tidak disebutkan</option>
     </select>
     <br><br>
 

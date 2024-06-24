@@ -30,7 +30,7 @@ module.exports = {
             }        
         } 
         catch (error) {        
-            res.render('/daftar-karyawan/form-tambah', {info_error: error})
+            res.render('daftar-karyawan/form-tambah', {info_error: error})
         }
     },
 
@@ -40,7 +40,7 @@ module.exports = {
             detail_karyawan: await m_daftar_karyawan.get_satu_karyawan(id),
             info_error: null
         }
-        res.render('/daftar-karyawan/form-edit', dataview)
+        res.render('daftar-karyawan/form-edit', dataview)
     },
 
     proses_update: async(req, res) => {
@@ -54,7 +54,5 @@ module.exports = {
             res.redirect('/daftar-karyawan?status=update-failed')
         }
     },
-
-
 
 }
